@@ -12,7 +12,7 @@ def generate_response(topic,business):
   # Prompt
   template = 'As an experienced contractor with the name of my business {business}, generate base one-page proposal that includes an introductory section, quote section and contact secction about {topic}.'
   prompt = PromptTemplate(input_variables=['topic','business'], template=template)
-  prompt_query = prompt.format(topic=topic)
+  prompt_query = prompt.format(topic=topic, business=business)
   # Run LLM model and print out response
   response = llm(prompt_query)
   return st.info(response)
