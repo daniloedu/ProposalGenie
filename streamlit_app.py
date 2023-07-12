@@ -12,7 +12,7 @@ st.write('Hello world!')
 def generate_response(topic):
   llm = OpenAI(model_name='text-davinci-003', openai_api_key=openai_api_key)
   # Prompt
-  template = 'As an experienced contractor and technical writer, generate an outline for a proposal about {topic}.'
+  template = 'As an experienced contractor, generate an outline and base content for a proposal about {topic}.'
   prompt = PromptTemplate(input_variables=['topic'], template=template)
   prompt_query = prompt.format(topic=topic)
   # Run LLM model and print out response
