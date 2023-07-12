@@ -7,11 +7,11 @@ st.title('📝🔗 Proposal Outline Generator App using ChatGPT')
 st.subheader('by Danilo Salazar at Origo')
 openai_api_key = st.secrets["openai_api_key"]
 
-def generate_response(topic):
+def generate_response(topic,business):
   llm = OpenAI(model_name='text-davinci-003', openai_api_key=openai_api_key)
   # Prompt
-  template = 'As an experienced contractor, generate base one-page proposal that includes an introductory section, quote section and contact secction about {topic}.'
-  prompt = PromptTemplate(input_variables=['topic'], template=template)
+  template = 'As an experienced contractor with the name of my business {business}, generate base one-page proposal that includes an introductory section, quote section and contact secction about {topic}.'
+  prompt = PromptTemplate(input_variables=['topic','namebusiness'], template=template)
   prompt_query = prompt.format(topic=topic)
   # Run LLM model and print out response
   response = llm(prompt_query)
@@ -19,8 +19,9 @@ def generate_response(topic):
 
 with st.form('business_form'):
   topic_text = st.text_input('Enter your business expertise:', '')
+  namebusiness_text = st.text_input('Enter the name of your business:', '')
   submitted = st.form_submit_button('Submit')
   if not openai_api_key.startswith('sk-'):
     st.warning('Please enter your OpenAI API key!', icon='⚠')
   if submitted and openai_api_key.startswith('sk-'):
-    generate_response(topic_text)
+    generate_response(topic_text,namebusiness_text)
