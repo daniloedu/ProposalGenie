@@ -10,7 +10,7 @@ openai_api_key = st.secrets["openai_api_key"]
 def generate_response(topic):
   llm = OpenAI(model_name='text-davinci-003', openai_api_key=openai_api_key)
   # Prompt
-  template = 'As an experienced contractor, generate base one-page proposal about {topic}.'
+  template = 'As an experienced contractor, generate base one-page proposal that includes an introductory section, quote section and contact secction about {topic}.'
   prompt = PromptTemplate(input_variables=['topic'], template=template)
   prompt_query = prompt.format(topic=topic)
   # Run LLM model and print out response
