@@ -4,7 +4,7 @@ from langchain import PromptTemplate
 
 st.set_page_config(page_title="📝🔗 Proposal Outline Generator App using ChatGPT")
 st.title('📝🔗 Proposal Outline Generator App using ChatGPT')
-st.subheader('by Danilo Salazar at Origo')
+st.subheader('by the Origo Team')
 openai_api_key = st.secrets["openai_api_key"]
 
 def generate_response(topic,business):
